@@ -1,0 +1,14 @@
+- name: Ansible Docker step
+  hosts: localhost
+  tasks:
+    - name: pull an image
+      docker_image:
+        name: <YOUR_DOCKERHUB_USERNAME>/<YOUR_DOCKERHUB_REPOSITORY>
+
+    - name: Start a container
+      docker_container:
+        name: time-timer
+        image: <YOUR_DOCKERHUB_USERNAME>/<YOUR_DOCKERHUB_REPOSITORY>
+        state: started
+        ports:
+         - "80:8080"
