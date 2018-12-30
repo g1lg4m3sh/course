@@ -1,0 +1,16 @@
+- name: Ansible Docker PUSH step
+  hosts: localhost
+  tasks:
+    - name: Log into Docker Hub and force re-authorization
+      docker_login:
+        username: <YOUR_DOCKERHUB_USERNAME>
+        password: <YOUR_DOCKERHUB_PASSWORD>
+        email: <YOUR_DOCKERHUB_EMAIL>
+        reauthorize: yes
+
+    - name: push an image
+      docker_image:
+        name: time-tracker
+        repository: <YOUR_DOCKERHUB_USERNAME>/<YOUR_DOCKERHUB_REPOSITORY>
+        tag: latest
+        push: yes
